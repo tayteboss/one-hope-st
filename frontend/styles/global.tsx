@@ -5,8 +5,8 @@ export const GlobalStyles = createGlobalStyle`
 	:root {
 		--colour-white: ${theme.colours.white};
 		--colour-black: ${theme.colours.black};
-		--colour-system-white-50: ${theme.colours.systemWhite.grey50};
-		--colour-system-black-50: ${theme.colours.systemBlack.grey50};
+		--colour-dark-brown: ${theme.colours.darkBrown};
+		--colour-light-brown: ${theme.colours.lightBrown};
 		--font-default: ${theme.fonts.default};
 		--transition-speed-default: ${theme.transitionSpeed.default};
 		--transition-speed-fast: ${theme.transitionSpeed.fast};
@@ -32,8 +32,8 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	::selection {
-		background-color: red;
-		color: black;
+		background-color: var(--colour-light-brown);
+		color: var(--colour-dark-brown);
 	}
 
 	html {
@@ -61,7 +61,7 @@ export const GlobalStyles = createGlobalStyle`
 	label,
 	body {
 		font-family: var(--font-default);
-		color: var(--colour-black);
+		color: var(--colour-light-brown);
 		line-height: 1.4;
 	}
 
@@ -76,7 +76,7 @@ export const GlobalStyles = createGlobalStyle`
 
 	a {
 		text-decoration: underline;
-		color: var(--colour-black);
+		color: var(--colour-light-brown);
 		transition: all var(--transition-speed-default) var(--transition-ease);
 	}
 
