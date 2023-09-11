@@ -1,19 +1,19 @@
-import Head from 'next/head';
-import { renderMetaTags } from 'react-datocms';
 import styled from 'styled-components';
-import { getPage } from '../lib/datocms';
 import { NextSeo } from 'next-seo';
+import client from '../client';
 
 const PageWrapper = styled.div``;
 
 type Props = {
-	data: {}
+	siteSettings: {}
 };
 
 const Page = (props: Props) => {
 	const {
-		data
+		siteSettings
 	} = props;
+
+	console.log('siteSettings', siteSettings);
 
 	return (
 	<PageWrapper>
@@ -27,12 +27,17 @@ const Page = (props: Props) => {
 };
 
 export async function getStaticProps() {
-	// const data = await getPage('home');
-	const data = false;
+	const siteSettingsQuery = `
+		*[_type == 'siteSettings'][0] {
+			...,
+		}
+	`;
+
+	const siteSettings = await client.fetch(siteSettingsQuery);
 
 	return {
 		props: {
-			data,
+			siteSettings,
 		},
 	};
 }
