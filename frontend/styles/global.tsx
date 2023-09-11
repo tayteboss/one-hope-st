@@ -40,6 +40,7 @@ export const GlobalStyles = createGlobalStyle`
 		scroll-behavior: smooth;
 		background: ${theme.colours.white};
 		font-size: 16px;
+		cursor: crosshair;
 
 		&.no-scroll {
 			overflow-y: hidden;
@@ -47,6 +48,10 @@ export const GlobalStyles = createGlobalStyle`
 			body {
 				overflow-y: hidden;
 			}
+		}
+
+		* {
+			text-transform: uppercase;
 		}
 	}
 

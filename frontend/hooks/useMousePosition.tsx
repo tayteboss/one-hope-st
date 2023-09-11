@@ -20,6 +20,8 @@ export const useMousePosition = (): ReturnMousePosition => {
 		const throttledSetFromEvent = throttle(setFromEvent, 50);
 		window.addEventListener('mousemove', throttledSetFromEvent);
 
+		setPosition({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+
 		return () => {
 			window.removeEventListener('mousemove', throttledSetFromEvent);
 		};

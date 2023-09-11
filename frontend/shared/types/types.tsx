@@ -29,3 +29,7 @@ export type Transitions = {
 		}
 	}
 };
+
+export type SiteSettingsType = {
+	seoDescription: string;
+}

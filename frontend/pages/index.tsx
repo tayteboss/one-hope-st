@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import { NextSeo } from 'next-seo';
 import client from '../client';
+import { SiteSettingsType } from '../shared/types/types';
+import Logo from '../components/blocks/Logo';
 
 const PageWrapper = styled.div``;
 
 type Props = {
-	siteSettings: {}
+	siteSettings: SiteSettingsType
 };
 
 const Page = (props: Props) => {
@@ -18,10 +20,10 @@ const Page = (props: Props) => {
 	return (
 	<PageWrapper>
 		<NextSeo
-			title="Boiler"
-			description="Boiler Plate"
+			title="One Hope St - Brunswick Co-working hair studio"
+			description={siteSettings?.seoDescription || ''}
 		/>
-		Home
+		<Logo />
 	</PageWrapper>
 	);
 };
