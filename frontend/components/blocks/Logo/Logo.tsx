@@ -1,6 +1,12 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import { TransitionsType } from '../../../shared/types/types';
 
-const LogoWrapper = styled.div`
+type Props = {
+	tabVariants: TransitionsType;
+}
+
+const LogoWrapper = styled(motion.div)`
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -17,9 +23,19 @@ const LogoGraphic = styled.img`
 	height: auto;
 `;
 
-const Logo = () => {
+const Logo = (props: Props) => {
+	const {
+		tabVariants
+	} = props;
+
 	return (
-		<LogoWrapper className="hidden-element">
+		<LogoWrapper
+			className="hidden-element"
+			variants={tabVariants}
+			initial='hidden'
+			animate='visible'
+			exit='hidden'
+		>
 			<LogoGraphic src="/icons/logo.svg" />
 		</LogoWrapper>
 	);

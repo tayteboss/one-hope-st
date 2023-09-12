@@ -8,11 +8,13 @@ const Main = styled.main``;
 
 type Props = {
 	children: ReactNode;
+	handleActiveTab: (activeTab: string) => void;
 };
 
 const Layout = (props: Props) => {
 	const {
 		children,
+		handleActiveTab
 	} = props;
 
 	const [aocIsActive, setAocIsActive] = useState(false);
@@ -42,7 +44,7 @@ const Layout = (props: Props) => {
 
 	return (
 		<>
-			<Header />
+			<Header handleActiveTab={handleActiveTab} />
 			<AOC
 				aocIsActive={aocIsActive}
 				handleCloseAoc={() => handleCloseAoc()}

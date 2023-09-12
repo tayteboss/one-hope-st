@@ -30,6 +30,7 @@ const App = (props: Props) => {
 
 	const [hasVisited, setHasVisited] = useState<boolean>(false);
 	const [appCursorRefresh, setAppCursorRefresh] = useState(0);
+	const [activeTab, setActiveTab] = useState('Home');
 
 	const router= useRouter();
 	const routerEvents = router.events;
@@ -63,7 +64,7 @@ const App = (props: Props) => {
 		<>
 			<GlobalStyles />
 			<ThemeProvider theme={theme}>
-				<Layout>
+				<Layout handleActiveTab={(title) => setActiveTab(title)}>
 					<AnimatePresence
 						mode="wait"
 						onExitComplete={() => handleExitComplete()}
@@ -75,6 +76,7 @@ const App = (props: Props) => {
 							cursorRefresh={
 								() => setAppCursorRefresh(appCursorRefresh + 1)
 							}
+							activeTab={activeTab}
 						/>
 					</AnimatePresence>
 					<Orb cursorRefresh={() => setAppCursorRefresh(appCursorRefresh + 1)} />

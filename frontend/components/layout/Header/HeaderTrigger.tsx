@@ -3,6 +3,7 @@ import styled from 'styled-components';
 type Props = {
 	title: string;
 	setIsHovered: (isHovered: boolean) => void;
+	handleActiveTab: (activeTab: string) => void;
 }
 
 const HeaderTriggerWrapper = styled.button`
@@ -20,7 +21,8 @@ const HeaderTriggerWrapper = styled.button`
 const HeaderTrigger = (props: Props) => {
 	const {
 		title,
-		setIsHovered
+		setIsHovered,
+		handleActiveTab
 	} = props;
 
 	return (
@@ -28,6 +30,7 @@ const HeaderTrigger = (props: Props) => {
 			className="header-trigger"
 			onMouseOver={() => setIsHovered(true)}
 			onMouseOut={() => setIsHovered(false)}
+			onClick={() => handleActiveTab(title)}
 		>
 			{title && title}
 		</HeaderTriggerWrapper>

@@ -3,6 +3,10 @@ import pxToRem from '../../../utils/pxToRem';
 import HeaderTrigger from './HeaderTrigger';
 import { useState } from 'react';
 
+type Props = {
+	handleActiveTab: (activeTab: string) => void;
+}
+
 type StyledProps = {
 	$isHovered: boolean;
 }
@@ -33,7 +37,11 @@ const TriggerWrapper = styled.div`
 	justify-content: space-between;
 `;
 
-const Header = () => {
+const Header = (props: Props) => {
+	const {
+		handleActiveTab
+	} = props;
+
 	const [isHovered, setIsHovered] = useState(false);
 
 	return (
@@ -45,20 +53,24 @@ const Header = () => {
 				<HeaderTrigger
 					title="Gallery"
 					setIsHovered={setIsHovered}
+					handleActiveTab={handleActiveTab}
 				/>
 				<HeaderTrigger
 					title="Stylists"
 					setIsHovered={setIsHovered}
+					handleActiveTab={handleActiveTab}
 				/>
 			</TriggerWrapper>
 			<TriggerWrapper>
 				<HeaderTrigger
 					title="Contact"
 					setIsHovered={setIsHovered}
+					handleActiveTab={handleActiveTab}
 				/>
 				<HeaderTrigger
 					title="Socials"
 					setIsHovered={setIsHovered}
+					handleActiveTab={handleActiveTab}
 				/>
 			</TriggerWrapper>
 		</HeaderWrapper>
