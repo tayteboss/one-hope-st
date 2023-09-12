@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { useMousePosition } from '../../../hooks/useMousePosition';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import pxToRem from '../../../utils/pxToRem';
+import Cookies from 'js-cookie';
 
 type StyledProps = {
 	$isHoveringLink: boolean;
@@ -46,20 +48,45 @@ const Svg = styled.svg<StyledProps>`
 	transition: all var(--transition-speed-default) var(--transition-ease);
 `;
 
-const Cursor = styled.div`
+const ButtonCursor = styled(motion.div)`
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 15;
-	height: 50px;
-	width: 50px;
+	padding: ${pxToRem(4)} ${pxToRem(12)};
 	mix-blend-mode: normal;
-	fill: radial-gradient(50% 50% at 50% 50%, #FFF 0%, rgba(255, 255, 255, 0.00) 100%);
+	background: var(--colour-dark-brown);
+	border-radius: 100px;
 `;
+
+const Text = styled.div`
+	font-size: ${pxToRem(18)};
+	line-height: ${pxToRem(20)};
+	color: var(--colour-white);
+`;
+
+const buttonVariants = {
+	hidden: {
+		opacity: 0,
+		transition: {
+			duration: 0.3,
+			ease: 'easeInOut'
+		}
+	},
+	visible: {
+		opacity: 1,
+		transition: {
+			duration: 0.3,
+			ease: 'easeInOut'
+		}
+	}
+};
 
 const ProjectGalleryCursor = ({ cursorRefresh }: Props) => {
 	const [isHoveringLink, setIsHoveringLink] = useState(false);
+	const [buttonText, setButtonText] = useState<boolean | string>(false);
+	const [buttonDown, setButtonDown] = useState(false);
 	const [isOnDevice, setIsOnDevice] = useState(false);
 
 	const router = useRouter();
@@ -83,7 +110,18 @@ const ProjectGalleryCursor = ({ cursorRefresh }: Props) => {
 	};
 
 	useEffect(() => {
+		const hasCookies = Cookies.get('visited');
+
+		if (!hasCookies) {
+			setTimeout(() => {
+				setButtonText('Enter');
+			}, 300);
+		}
+	}, []);
+
+	useEffect(() => {
 		const orbLinks = document.querySelectorAll('.orb-link');
+		const aocCursorLinks = document.querySelectorAll('.cursor-aoc');
 
 		orbLinks.forEach((link) => {
 			link.addEventListener('mouseenter', () => {
@@ -100,6 +138,24 @@ const ProjectGalleryCursor = ({ cursorRefresh }: Props) => {
 			});
 			link.addEventListener('click', () => {
 				setIsHoveringLink(false);
+			});
+		});
+
+		aocCursorLinks.forEach((link) => {
+			link.addEventListener('mouseenter', () => {
+				setButtonText('Enter');
+			});
+			link.addEventListener('mouseleave', () => {
+				setButtonText(false);
+			});
+			link.addEventListener('mousedown', () => {
+				setButtonDown(true);
+			});
+			link.addEventListener('mouseup', () => {
+				setButtonDown(false);
+			});
+			link.addEventListener('click', () => {
+				setButtonText(false);
 			});
 		});
 
@@ -120,6 +176,16 @@ const ProjectGalleryCursor = ({ cursorRefresh }: Props) => {
 		setIsHoveringLink(false);
 	}, [router.asPath, cursorRefresh]);
 
+	useEffect(() => {
+		const html = document.querySelector('html');
+
+		if (buttonText) {
+			html?.classList.add('no-cursor');
+		} else {
+			html?.classList.remove('no-cursor');
+		}
+	  }, [buttonText])
+
 	return (
 		<OrbWrapper>
 			<OrbInner
@@ -134,7 +200,6 @@ const ProjectGalleryCursor = ({ cursorRefresh }: Props) => {
 					ease: 'linear',
 				}}
 			>
-				{/* <Cursor /> */}
 				<Svg $isHoveringLink={isHoveringLink} width="780" height="780" viewBox="0 0 780 780" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<circle cx="390" cy="390" r="390" fill="url(#paint0_radial_559_198)"/>
 					<defs>
@@ -144,7 +209,18 @@ const ProjectGalleryCursor = ({ cursorRefresh }: Props) => {
 						</radialGradient>
 					</defs>
 				</Svg>
-
+				<AnimatePresence>
+					{buttonText && (
+						<ButtonCursor
+							variants={buttonVariants}
+							initial='hidden'
+							animate='visible'
+							exit='hidden'
+						>
+							<Text>{buttonText}</Text>
+						</ButtonCursor>
+					)}
+				</AnimatePresence>
 			</OrbInner>
 		</OrbWrapper>
 	);

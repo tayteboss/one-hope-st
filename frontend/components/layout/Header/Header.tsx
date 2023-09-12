@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 import pxToRem from '../../../utils/pxToRem';
+import HeaderTrigger from './HeaderTrigger';
+import { useState } from 'react';
 
-const HeaderWrapper = styled.header`
+type StyledProps = {
+	$isHovered: boolean;
+}
+
+const HeaderWrapper = styled.header<StyledProps>`
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -14,6 +20,12 @@ const HeaderWrapper = styled.header`
 	justify-content: space-between;
 	padding: ${pxToRem(16)};
 	mix-blend-mode: hard-light;
+
+	transition: opacity var(--transition-speed-default) var(--transition-ease);
+
+	.header-trigger {
+		filter: ${(props) => props.$isHovered ? 'blur(5px)' : 'blur(0)'};
+	}
 `;
 
 const TriggerWrapper = styled.div`
@@ -21,35 +33,33 @@ const TriggerWrapper = styled.div`
 	justify-content: space-between;
 `;
 
-const Trigger = styled.button`
-	font-size: 3vw;
-	color: var(--colour-light-brown);
-
-	transition: all var(--transition-speed-default) var(--transition-ease);
-
-	&:hover {
-		color: var(--colour-dark-brown);
-	}
-`;
-
 const Header = () => {
+	const [isHovered, setIsHovered] = useState(false);
+
 	return (
-		<HeaderWrapper className="header">
+		<HeaderWrapper
+			className="header hidden-element"
+			$isHovered={isHovered}
+		>
 			<TriggerWrapper>
-				<Trigger className="orb-link">
-					Gallery
-				</Trigger>
-				<Trigger className="orb-link">
-					Stylists
-				</Trigger>
+				<HeaderTrigger
+					title="Gallery"
+					setIsHovered={setIsHovered}
+				/>
+				<HeaderTrigger
+					title="Stylists"
+					setIsHovered={setIsHovered}
+				/>
 			</TriggerWrapper>
 			<TriggerWrapper>
-				<Trigger className="orb-link">
-					Contact
-				</Trigger>
-				<Trigger className="orb-link">
-					Socials
-				</Trigger>
+				<HeaderTrigger
+					title="Contact"
+					setIsHovered={setIsHovered}
+				/>
+				<HeaderTrigger
+					title="Socials"
+					setIsHovered={setIsHovered}
+				/>
 			</TriggerWrapper>
 		</HeaderWrapper>
 	)

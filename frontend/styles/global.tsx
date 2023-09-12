@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { theme } from './theme';
+import pxToRem from '../utils/pxToRem';
 
 export const GlobalStyles = createGlobalStyle`
 	:root {
@@ -50,6 +51,10 @@ export const GlobalStyles = createGlobalStyle`
 			}
 		}
 
+		&.no-cursor {
+			cursor: none !important;
+		}
+
 		* {
 			text-transform: uppercase;
 		}
@@ -67,7 +72,6 @@ export const GlobalStyles = createGlobalStyle`
 	body {
 		font-family: var(--font-default);
 		color: var(--colour-light-brown);
-		line-height: 1.4;
 	}
 
 	strong,
@@ -125,18 +129,17 @@ export const GlobalStyles = createGlobalStyle`
 
 	h3,
 	.type-h3 {
-		font-size: ${theme.size.h3};
-		line-height: 1.938rem;
+		font-size: ${pxToRem(52)};
+		line-height: ${pxToRem(48)};
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
-			font-size: ${theme.sizeTablet.h3};
+			
 		}
 
 		@media ${theme.mediaBreakpoints.mobile}
 		{
-			font-size: ${theme.sizeMobile.h3};
-			line-height: 1.563rem;
+			
 		}
 	}
 
@@ -214,6 +217,12 @@ export const GlobalStyles = createGlobalStyle`
 
 	.performance {
 		-webkit-transform: translateZ(0);
+	}
+
+	.hide-elements {
+		.hidden-element {
+			opacity: 0;
+		}
 	}
 
 	::placeholder {

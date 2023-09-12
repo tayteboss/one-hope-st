@@ -8,6 +8,8 @@ const LogoWrapper = styled.div`
 	z-index: 10;
 	mix-blend-mode: color-burn;
 	pointer-events: none;
+
+	transition: opacity var(--transition-speed-default) var(--transition-ease);
 `;
 
 const LogoGraphic = styled.img`
@@ -17,7 +19,7 @@ const LogoGraphic = styled.img`
 
 const Logo = () => {
 	return (
-		<LogoWrapper>
+		<LogoWrapper className="hidden-element">
 			<LogoGraphic src="/icons/logo.svg" />
 		</LogoWrapper>
 	);

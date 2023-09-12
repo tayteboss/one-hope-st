@@ -1,18 +1,20 @@
 import styled from 'styled-components';
 import { NextSeo } from 'next-seo';
 import client from '../client';
-import { SiteSettingsType } from '../shared/types/types';
+import { SiteSettingsType, TransitionsType } from '../shared/types/types';
 import Logo from '../components/blocks/Logo';
 
 const PageWrapper = styled.div``;
 
 type Props = {
-	siteSettings: SiteSettingsType
+	siteSettings: SiteSettingsType,
+	pageTransitionVariants: TransitionsType;
 };
 
 const Page = (props: Props) => {
 	const {
-		siteSettings
+		siteSettings,
+		pageTransitionVariants,
 	} = props;
 
 	console.log('siteSettings', siteSettings);
