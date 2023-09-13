@@ -10,7 +10,7 @@ const HeaderTriggerWrapper = styled.button`
 	font-size: 2.5vw;
 	color: var(--colour-light-brown);
 
-	transition: all var(--transition-speed-default) var(--transition-ease);
+	transition: all var(--transition-speed-slow) var(--transition-ease);
 
 	&:hover {
 		color: var(--colour-dark-brown);
@@ -27,7 +27,7 @@ const HeaderTrigger = (props: Props) => {
 
 	return (
 		<HeaderTriggerWrapper
-			className="header-trigger"
+			className="header-trigger cursor-header"
 			onMouseOver={() => setIsHovered(true)}
 			onMouseOut={() => setIsHovered(false)}
 			onClick={() => handleActiveTab(title)}

@@ -30,6 +30,19 @@ export type TransitionsType = {
 	}
 };
 
+export type ImageType = {
+	url: string;
+};
+
 export type SiteSettingsType = {
 	seoDescription: string;
-}
+	instagramLink: string;
+	instagramHandle: string;
+	address: {};
+	phone: string;
+	email: string;
+	aoc: string;
+	imageGallery: ImageType[];
+	mapsLink: string;
+	
+};

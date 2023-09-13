@@ -7,14 +7,17 @@ import SocialsTab from '../components/blocks/SocialsTab';
 import GalleryTab from '../components/blocks/GalleryTab';
 import StylistsTab from '../components/blocks/StylistsTab';
 import ContactTab from '../components/blocks/ContactTab';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useContext, useEffect } from 'react';
+import { CursorContext } from '../components/layout/Layout';
 
-const PageWrapper = styled.div``;
+const PageWrapper = styled(motion.div)``;
 
 type Props = {
 	siteSettings: SiteSettingsType,
 	pageTransitionVariants: TransitionsType;
 	activeTab: string;
+	cursorRefresh: () => void;
 };
 
 const tabVariants = {
@@ -38,50 +41,64 @@ const Page = (props: Props) => {
 	const {
 		siteSettings,
 		pageTransitionVariants,
-		activeTab
+		activeTab,
 	} = props;
 
-	console.log('siteSettings', siteSettings);
+	const { cursorRefresh, setCursorRefresh } = useContext(CursorContext);
+
+	const handleExitComplete = () => {
+		setCursorRefresh(cursorRefresh + 1);
+	};
 
 	return (
-	<PageWrapper>
-		<NextSeo
-			title="One Hope St - Brunswick Co-working hair studio"
-			description={siteSettings?.seoDescription || ''}
-		/>
-		<AnimatePresence mode="wait">
-			{activeTab === 'Home' && (
-				<Logo
-					tabVariants={tabVariants}
-					key={1}
-				/>
-			)}
-			{activeTab === 'Gallery' && (
-				<GalleryTab
-					tabVariants={tabVariants}
-					key={2}
-				/>
-			)}
-			{activeTab === 'Stylists' && (
-				<StylistsTab
-					tabVariants={tabVariants}
-					key={3}
-				/>
-			)}
-			{activeTab === 'Contact' && (
-				<ContactTab
-					tabVariants={tabVariants}
-					key={3}
-				/>
-			)}
-			{activeTab === 'Socials' && (
-				<SocialsTab
-					tabVariants={tabVariants}
-					key={4}
-				/>
-			)}
-		</AnimatePresence>
-	</PageWrapper>
+		<PageWrapper
+			variants={pageTransitionVariants}
+			initial='hidden'
+			animate='visible'
+			exit='hidden'
+		>
+			<NextSeo
+				title="One Hope St - Brunswick Co-working hair studio"
+				description={siteSettings?.seoDescription || ''}
+			/>
+			<AnimatePresence
+				mode="wait"
+				onExitComplete={() => handleExitComplete()}
+			>
+				{activeTab === 'Home' && (
+					<Logo
+						tabVariants={tabVariants}
+						key={1}
+					/>
+				)}
+				{activeTab === 'Gallery' && (
+					<GalleryTab
+						tabVariants={tabVariants}
+						key={2}
+					/>
+				)}
+				{activeTab === 'Stylists' && (
+					<StylistsTab
+						tabVariants={tabVariants}
+						key={3}
+					/>
+				)}
+				{activeTab === 'Contact' && (
+					<ContactTab
+						tabVariants={tabVariants}
+						key={3}
+					/>
+				)}
+				{activeTab === 'Socials' && (
+					<SocialsTab
+						tabVariants={tabVariants}
+						key={4}
+						instagramLink={siteSettings?.instagramLink || ''}
+						instagramHandle={siteSettings?.instagramHandle || ''}
+					/>
+				)}
+			</AnimatePresence>
+		</PageWrapper>
 	);
 };
 

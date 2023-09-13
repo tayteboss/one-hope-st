@@ -25,7 +25,7 @@ const HeaderWrapper = styled.header<StyledProps>`
 	padding: ${pxToRem(16)};
 	mix-blend-mode: hard-light;
 
-	transition: opacity var(--transition-speed-default) var(--transition-ease);
+	transition: opacity var(--transition-speed-slow) var(--transition-ease);
 
 	.header-trigger {
 		filter: ${(props) => props.$isHovered ? 'blur(5px)' : 'blur(0)'};

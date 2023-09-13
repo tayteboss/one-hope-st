@@ -225,6 +225,20 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
+	.tab-wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		height: 100dvh;
+		width: 100%;
+		z-index: 15;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		pointer-events: none;
+	}
+
 	::placeholder {
 		color: currentcolor;
 		opacity: 1;

@@ -14,13 +14,13 @@ const LogoWrapper = styled(motion.div)`
 	z-index: 10;
 	mix-blend-mode: color-burn;
 	pointer-events: none;
-
-	transition: opacity var(--transition-speed-default) var(--transition-ease);
 `;
 
 const LogoGraphic = styled.img`
 	width: 30vw;
 	height: auto;
+
+	transition: all var(--transition-speed-slow) var(--transition-ease);
 `;
 
 const Logo = (props: Props) => {
@@ -30,13 +30,15 @@ const Logo = (props: Props) => {
 
 	return (
 		<LogoWrapper
-			className="hidden-element"
 			variants={tabVariants}
 			initial='hidden'
 			animate='visible'
 			exit='hidden'
 		>
-			<LogoGraphic src="/icons/logo.svg" />
+			<LogoGraphic
+				src="/icons/logo.svg"
+				className="hidden-element"
+			/>
 		</LogoWrapper>
 	);
 };

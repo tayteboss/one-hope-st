@@ -13,8 +13,8 @@ import useHeaderHeight from '../hooks/useHeaderHeight';
 import Orb from '../components/elements/Orb';
 
 const pageTransitionVariants: TransitionsType = {
-	hidden: { opacity: 0, transition: { duration: 0.3 } },
-	visible: { opacity: 1, transition: { duration: 0.3, delay: 0.25 } },
+	hidden: { opacity: 0, transition: { duration: 0.5 } },
+	visible: { opacity: 1, transition: { duration: 0.5, delay: 0.25 } },
 };
 
 type Props = {
@@ -29,7 +29,6 @@ const App = (props: Props) => {
 	} = props;
 
 	const [hasVisited, setHasVisited] = useState<boolean>(false);
-	const [appCursorRefresh, setAppCursorRefresh] = useState(0);
 	const [activeTab, setActiveTab] = useState('Home');
 
 	const router= useRouter();
@@ -50,16 +49,6 @@ const App = (props: Props) => {
 		}
 	}, []);
 
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setAppCursorRefresh(appCursorRefresh + 1);
-		}, 300);
-
-		return () => {
-			clearTimeout(timer);
-		}
-	}, [router.pathname]);
-
 	return (
 		<>
 			<GlobalStyles />
@@ -73,13 +62,9 @@ const App = (props: Props) => {
 							{...pageProps}
 							key={router.asPath}
 							pageTransitionVariants={pageTransitionVariants}
-							cursorRefresh={
-								() => setAppCursorRefresh(appCursorRefresh + 1)
-							}
 							activeTab={activeTab}
 						/>
 					</AnimatePresence>
-					<Orb cursorRefresh={() => setAppCursorRefresh(appCursorRefresh + 1)} />
 				</Layout>
 			</ThemeProvider>
 		</>

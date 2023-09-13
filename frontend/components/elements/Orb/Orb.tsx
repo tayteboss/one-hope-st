@@ -7,11 +7,11 @@ import pxToRem from '../../../utils/pxToRem';
 import Cookies from 'js-cookie';
 
 type StyledProps = {
-	$isHoveringLink: boolean;
+	$largeOrb: boolean;
 }
 
 type Props = {
-	cursorRefresh: () => void;
+	cursorRefresh: number;
 }
 
 const OrbWrapper = styled.div`
@@ -30,10 +30,10 @@ const OrbInner = styled(motion.div)`
 	flex-flow: row;
 	align-content: center;
 	justify-content: center;
-	left: -80vw;
-	top: -80vh;
-	width: 160vw;
-	height: 160vh;
+	left: -90vw;
+	top: -90vh;
+	width: 180vw;
+	height: 180vh;
 `;
 
 const Svg = styled.svg<StyledProps>`
@@ -42,10 +42,10 @@ const Svg = styled.svg<StyledProps>`
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 10;
-	width: ${(props) => props.$isHoveringLink ? '100%' : '100%'};
-	height: ${(props) => props.$isHoveringLink ? '100%' : '100%'};
+	width: ${(props) => props.$largeOrb ? '250%' : '100%'};
+	height: ${(props) => props.$largeOrb ? '250%' : '100%'};
 
-	transition: all var(--transition-speed-default) var(--transition-ease);
+	transition: all 1000ms var(--transition-ease);
 `;
 
 const ButtonCursor = styled(motion.div)`
@@ -88,6 +88,7 @@ const ProjectGalleryCursor = ({ cursorRefresh }: Props) => {
 	const [buttonText, setButtonText] = useState<boolean | string>(false);
 	const [buttonDown, setButtonDown] = useState(false);
 	const [isOnDevice, setIsOnDevice] = useState(false);
+	const [largeOrb, setLargeOrb] = useState(false);
 
 	const router = useRouter();
 
@@ -120,30 +121,53 @@ const ProjectGalleryCursor = ({ cursorRefresh }: Props) => {
 	}, []);
 
 	useEffect(() => {
-		const orbLinks = document.querySelectorAll('.orb-link');
+		const headerLinks = document.querySelectorAll('.cursor-header');
 		const aocCursorLinks = document.querySelectorAll('.cursor-aoc');
+		const instagramCursorLinks = document.querySelectorAll('.cursor-instagram');
 
-		orbLinks.forEach((link) => {
+		headerLinks.forEach((link) => {
 			link.addEventListener('mouseenter', () => {
-				setIsHoveringLink(true);
+				setLargeOrb(true);
 			});
 			link.addEventListener('mouseleave', () => {
-				setIsHoveringLink(false);
+				setLargeOrb(false);
 			});
 			link.addEventListener('mousedown', () => {
-				setIsHoveringLink(false);
+				// setLargeOrb(false);
 			});
 			link.addEventListener('mouseup', () => {
-				setIsHoveringLink(true);
+				// setLargeOrb(false);
 			});
 			link.addEventListener('click', () => {
-				setIsHoveringLink(false);
+				// setLargeOrb(false);
 			});
 		});
 
 		aocCursorLinks.forEach((link) => {
 			link.addEventListener('mouseenter', () => {
 				setButtonText('Enter');
+			});
+			link.addEventListener('mouseleave', () => {
+				setButtonText(false);
+			});
+			link.addEventListener('mousedown', () => {
+				setButtonDown(true);
+			});
+			link.addEventListener('mouseup', () => {
+				setButtonDown(false);
+			});
+			link.addEventListener('click', () => {
+				setButtonText(false);
+			});
+		});
+
+		console.log('instagramCursorLinks', instagramCursorLinks);
+
+		instagramCursorLinks.forEach((link) => {
+			link.addEventListener('mouseenter', () => {
+				console.log('hello');
+				
+				setButtonText('Instagram');
 			});
 			link.addEventListener('mouseleave', () => {
 				setButtonText(false);
@@ -184,7 +208,7 @@ const ProjectGalleryCursor = ({ cursorRefresh }: Props) => {
 		} else {
 			html?.classList.remove('no-cursor');
 		}
-	  }, [buttonText])
+	}, [buttonText])
 
 	return (
 		<OrbWrapper>
@@ -200,7 +224,7 @@ const ProjectGalleryCursor = ({ cursorRefresh }: Props) => {
 					ease: 'linear',
 				}}
 			>
-				<Svg $isHoveringLink={isHoveringLink} width="780" height="780" viewBox="0 0 780 780" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<Svg $largeOrb={largeOrb} width="780" height="780" viewBox="0 0 780 780" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<circle cx="390" cy="390" r="390" fill="url(#paint0_radial_559_198)"/>
 					<defs>
 						<radialGradient id="paint0_radial_559_198" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(390 390) rotate(90) scale(390)">
