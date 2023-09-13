@@ -44,5 +44,14 @@ export type SiteSettingsType = {
 	aoc: string;
 	imageGallery: ImageType[];
 	mapsLink: string;
-
 };
+
+export type StylistType = {
+	name: string;
+	slug: {
+		current: string;
+	};
+	profileDescription: [];
+	profileImage: ImageType[];
+	bookingLink: string;
+}

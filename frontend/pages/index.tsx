@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NextSeo } from 'next-seo';
 import client from '../client';
-import { SiteSettingsType, TransitionsType } from '../shared/types/types';
+import { SiteSettingsType, StylistType, TransitionsType } from '../shared/types/types';
 import Logo from '../components/blocks/Logo';
 import SocialsTab from '../components/blocks/SocialsTab';
 import GalleryTab from '../components/blocks/GalleryTab';
@@ -15,6 +15,7 @@ const PageWrapper = styled(motion.div)``;
 
 type Props = {
 	siteSettings: SiteSettingsType,
+	stylists: StylistType[];
 	pageTransitionVariants: TransitionsType;
 	activeTab: string;
 	cursorRefresh: () => void;
@@ -42,6 +43,7 @@ const Page = (props: Props) => {
 		siteSettings,
 		pageTransitionVariants,
 		activeTab,
+		stylists
 	} = props;
 
 	const { cursorRefresh, setCursorRefresh } = useContext(CursorContext);
@@ -49,6 +51,9 @@ const Page = (props: Props) => {
 	const handleExitComplete = () => {
 		setCursorRefresh(cursorRefresh + 1);
 	};
+
+	console.log('stylists', stylists);
+	
 
 	return (
 		<PageWrapper
@@ -81,6 +86,7 @@ const Page = (props: Props) => {
 					<StylistsTab
 						tabVariants={tabVariants}
 						key={3}
+						stylists={stylists}
 					/>
 				)}
 				{activeTab === 'Contact' && (
@@ -114,11 +120,20 @@ export async function getStaticProps() {
 		}
 	`;
 
+	const stylistsQuery = `
+		*[_type == 'stylists'] | order(orderRank) [0...100] {
+			...,
+			'profileImage': profileImage.asset->url,
+		}
+	`;
+
 	const siteSettings = await client.fetch(siteSettingsQuery);
+	const stylists = await client.fetch(stylistsQuery);
 
 	return {
 		props: {
 			siteSettings,
+			stylists
 		},
 	};
 }
