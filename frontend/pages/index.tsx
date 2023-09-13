@@ -87,14 +87,19 @@ const Page = (props: Props) => {
 					<ContactTab
 						tabVariants={tabVariants}
 						key={3}
+						address={siteSettings?.address}
+						addressLink={siteSettings?.mapsLink}
+						phone={siteSettings?.phone}
+						email={siteSettings?.email}
+
 					/>
 				)}
 				{activeTab === 'Socials' && (
 					<SocialsTab
 						tabVariants={tabVariants}
 						key={4}
-						instagramLink={siteSettings?.instagramLink || ''}
-						instagramHandle={siteSettings?.instagramHandle || ''}
+						instagramLink={siteSettings?.instagramLink}
+						instagramHandle={siteSettings?.instagramHandle}
 					/>
 				)}
 			</AnimatePresence>

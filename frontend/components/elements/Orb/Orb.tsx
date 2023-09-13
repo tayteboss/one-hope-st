@@ -124,6 +124,9 @@ const ProjectGalleryCursor = ({ cursorRefresh }: Props) => {
 		const headerLinks = document.querySelectorAll('.cursor-header');
 		const aocCursorLinks = document.querySelectorAll('.cursor-aoc');
 		const instagramCursorLinks = document.querySelectorAll('.cursor-instagram');
+		const mapCursorLinks = document.querySelectorAll('.cursor-map');
+		const emailCursorLinks = document.querySelectorAll('.cursor-email');
+		const phoneCursorLinks = document.querySelectorAll('.cursor-phone');
 
 		headerLinks.forEach((link) => {
 			link.addEventListener('mouseenter', () => {
@@ -131,15 +134,6 @@ const ProjectGalleryCursor = ({ cursorRefresh }: Props) => {
 			});
 			link.addEventListener('mouseleave', () => {
 				setLargeOrb(false);
-			});
-			link.addEventListener('mousedown', () => {
-				// setLargeOrb(false);
-			});
-			link.addEventListener('mouseup', () => {
-				// setLargeOrb(false);
-			});
-			link.addEventListener('click', () => {
-				// setLargeOrb(false);
 			});
 		});
 
@@ -150,33 +144,53 @@ const ProjectGalleryCursor = ({ cursorRefresh }: Props) => {
 			link.addEventListener('mouseleave', () => {
 				setButtonText(false);
 			});
-			link.addEventListener('mousedown', () => {
-				setButtonDown(true);
+			link.addEventListener('click', () => {
+				setButtonText(false);
 			});
-			link.addEventListener('mouseup', () => {
-				setButtonDown(false);
+		});
+
+		instagramCursorLinks.forEach((link) => {
+			link.addEventListener('mouseenter', () => {
+				setButtonText('Instagram');
+			});
+			link.addEventListener('mouseleave', () => {
+				setButtonText(false);
 			});
 			link.addEventListener('click', () => {
 				setButtonText(false);
 			});
 		});
 
-		console.log('instagramCursorLinks', instagramCursorLinks);
-
-		instagramCursorLinks.forEach((link) => {
+		mapCursorLinks.forEach((link) => {
 			link.addEventListener('mouseenter', () => {
-				console.log('hello');
-				
-				setButtonText('Instagram');
+				setButtonText('View on map');
 			});
 			link.addEventListener('mouseleave', () => {
 				setButtonText(false);
 			});
-			link.addEventListener('mousedown', () => {
-				setButtonDown(true);
+			link.addEventListener('click', () => {
+				setButtonText(false);
 			});
-			link.addEventListener('mouseup', () => {
-				setButtonDown(false);
+		});
+
+		emailCursorLinks.forEach((link) => {
+			link.addEventListener('mouseenter', () => {
+				setButtonText('Email');
+			});
+			link.addEventListener('mouseleave', () => {
+				setButtonText(false);
+			});
+			link.addEventListener('click', () => {
+				setButtonText(false);
+			});
+		});
+
+		phoneCursorLinks.forEach((link) => {
+			link.addEventListener('mouseenter', () => {
+				setButtonText('Call');
+			});
+			link.addEventListener('mouseleave', () => {
+				setButtonText(false);
 			});
 			link.addEventListener('click', () => {
 				setButtonText(false);

@@ -38,11 +38,11 @@ export type SiteSettingsType = {
 	seoDescription: string;
 	instagramLink: string;
 	instagramHandle: string;
-	address: {};
+	address: [];
 	phone: string;
 	email: string;
 	aoc: string;
 	imageGallery: ImageType[];
 	mapsLink: string;
-	
+
 };

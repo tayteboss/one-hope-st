@@ -9,6 +9,7 @@ type Props = {
 const HeaderTriggerWrapper = styled.button`
 	font-size: 2.5vw;
 	color: var(--colour-light-brown);
+	pointer-events: all;
 
 	transition: all var(--transition-speed-slow) var(--transition-ease);
 

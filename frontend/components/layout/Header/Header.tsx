@@ -24,6 +24,7 @@ const HeaderWrapper = styled.header<StyledProps>`
 	justify-content: space-between;
 	padding: ${pxToRem(16)};
 	mix-blend-mode: hard-light;
+	pointer-events: none;
 
 	transition: opacity var(--transition-speed-slow) var(--transition-ease);
 

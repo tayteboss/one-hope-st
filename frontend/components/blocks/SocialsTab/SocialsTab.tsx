@@ -15,11 +15,16 @@ const SocialsTabWrapper = styled(motion.div)`
 
 const LinkTag = styled.a`
 	text-align: center;
-	color: var(--colour-dark-brown);
+	color: var(--colour-light-brown);
 	text-decoration: none;
-	font-size: 5vw;
 	pointer-events: all;
 	cursor: none;
+
+	transition: all var(--transition-speed-slow) var(--transition-ease);
+
+	&:hover {
+		color: var(--colour-dark-brown);
+	}
 `;
 
 const SocialsTab = (props: Props) => {
@@ -43,7 +48,7 @@ const SocialsTab = (props: Props) => {
 				<Link href={instagramLink} passHref>
 					<LinkTag
 						target="_blank"
-						className="cursor-instagram"
+						className="cursor-instagram type-large"
 					>
 						[AT]{instagramHandle}
 					</LinkTag>

@@ -84,7 +84,7 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	a {
-		text-decoration: underline;
+		text-decoration: none;
 		color: var(--colour-light-brown);
 		transition: all var(--transition-speed-default) var(--transition-ease);
 	}
@@ -172,6 +172,26 @@ export const GlobalStyles = createGlobalStyle`
 		{
 			font-size: ${theme.sizeMobile.body};
 			line-height: 1.75rem;
+		}
+	}
+
+	.type-large {
+		font-size: 7vw !important;
+		line-height: 0.85 !important;
+
+		* {
+			font-size: 7vw !important;
+			line-height: 0.85 !important;
+		}
+	}
+
+	.type-small {
+		font-size: 3vw !important;
+		line-height: 0.85 !important;
+
+		* {
+			font-size: 3vw !important;
+			line-height: 0.85 !important;
 		}
 	}
 
