@@ -50,7 +50,7 @@ const SocialsTab = (props: Props) => {
 						target="_blank"
 						className="cursor-instagram type-large"
 					>
-						[AT]{instagramHandle}
+						@{instagramHandle}
 					</LinkTag>
 				</Link>
 			)}

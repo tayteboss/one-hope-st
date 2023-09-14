@@ -18,13 +18,14 @@ const AOCWrapper = styled(motion.div)`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	mix-blend-mode: hard-light;
+	mix-blend-mode: color-burn;
 `;
 
 const AOCInner = styled.p`
 	max-width: ${pxToRem(930)};
 	text-align: center;
 	font-size: ${pxToRem(52)};
+	color: var(--colour-light-brown);
 `;
 
 const wrapperVariants = {

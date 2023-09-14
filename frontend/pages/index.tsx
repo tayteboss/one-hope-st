@@ -8,7 +8,7 @@ import GalleryTab from '../components/blocks/GalleryTab';
 import StylistsTab from '../components/blocks/StylistsTab';
 import ContactTab from '../components/blocks/ContactTab';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { CursorContext } from '../components/layout/Layout';
 
 const PageWrapper = styled(motion.div)``;
@@ -24,6 +24,7 @@ type Props = {
 const tabVariants = {
 	hidden: {
 		opacity: 0,
+		filter: 'blur(5px)',
 		transition: {
 			duration: 1,
 			ease: 'easeInOut'
@@ -31,6 +32,7 @@ const tabVariants = {
 	},
 	visible: {
 		opacity: 1,
+		filter: 'blur(0px)',
 		transition: {
 			duration: 1,
 			ease: 'easeInOut'
@@ -49,11 +51,10 @@ const Page = (props: Props) => {
 	const { cursorRefresh, setCursorRefresh } = useContext(CursorContext);
 
 	const handleExitComplete = () => {
+		console.log('exit complete');
+		
 		setCursorRefresh(cursorRefresh + 1);
 	};
-
-	console.log(siteSettings);
-	
 
 	return (
 		<PageWrapper
@@ -93,7 +94,7 @@ const Page = (props: Props) => {
 				{activeTab === 'Contact' && (
 					<ContactTab
 						tabVariants={tabVariants}
-						key={3}
+						key={4}
 						address={siteSettings?.address}
 						addressLink={siteSettings?.mapsLink}
 						phone={siteSettings?.phone}
@@ -104,7 +105,7 @@ const Page = (props: Props) => {
 				{activeTab === 'Socials' && (
 					<SocialsTab
 						tabVariants={tabVariants}
-						key={4}
+						key={5}
 						instagramLink={siteSettings?.instagramLink}
 						instagramHandle={siteSettings?.instagramHandle}
 					/>
