@@ -5,6 +5,7 @@ import Link from 'next/link';
 type Props = {
 	title: string;
 	link: string;
+	target: string;
 	setButtonIsHovered: (isHovered: boolean) => void;
 };
 
@@ -30,6 +31,7 @@ const StylistCardButton = (props: Props) => {
 	const {
 		title,
 		link,
+		target,
 		setButtonIsHovered
 	} = props;
 
@@ -41,6 +43,7 @@ const StylistCardButton = (props: Props) => {
 						onMouseOver={() => setButtonIsHovered(true)}
 						onMouseOut={() => setButtonIsHovered(false)}
 						className="stylist-card-button"
+						target={target}
 					>
 						{title && title}
 					</LinkTag>

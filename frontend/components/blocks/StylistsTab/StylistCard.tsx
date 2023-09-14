@@ -20,6 +20,8 @@ const StylistCardWrapper = styled.div<StyledProps>`
 	margin-bottom: ${pxToRem(8)};
 	position: relative;
 
+	transition: all var(--transition-speed-default) var(--transition-ease);
+
 	&:hover {
 		filter: blur(0px) !important;
 	}
@@ -88,11 +90,13 @@ const StylistCard = ({ data, setCardIsHovered }: Props) => {
 						<StylistCardButton
 							title="Read Bio"
 							link={`/${slug?.current}`}
+							target="_self"
 							setButtonIsHovered={setButtonIsHovered}
 						/>
 						<StylistCardButton
 							title="Make Booking"
 							link={bookingLink}
+							target="_blank"
 							setButtonIsHovered={setButtonIsHovered}
 						/>
 					</StylistButtonWrapper>

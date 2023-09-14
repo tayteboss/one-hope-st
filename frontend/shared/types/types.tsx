@@ -31,7 +31,9 @@ export type TransitionsType = {
 };
 
 export type ImageType = {
-	url: string;
+	asset: {
+		url: string;
+	}
 };
 
 export type SiteSettingsType = {

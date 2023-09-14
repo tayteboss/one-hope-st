@@ -178,21 +178,11 @@ export const GlobalStyles = createGlobalStyle`
 	.type-large {
 		font-size: 7vw !important;
 		line-height: 0.85 !important;
-
-		* {
-			font-size: 7vw !important;
-			line-height: 0.85 !important;
-		}
 	}
 
 	.type-small {
 		font-size: 3vw !important;
 		line-height: 0.85 !important;
-
-		* {
-			font-size: 3vw !important;
-			line-height: 0.85 !important;
-		}
 	}
 
 	.view-element-fade-in

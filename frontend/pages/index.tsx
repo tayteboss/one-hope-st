@@ -52,7 +52,7 @@ const Page = (props: Props) => {
 		setCursorRefresh(cursorRefresh + 1);
 	};
 
-	console.log('stylists', stylists);
+	console.log(siteSettings);
 	
 
 	return (
@@ -80,6 +80,7 @@ const Page = (props: Props) => {
 					<GalleryTab
 						tabVariants={tabVariants}
 						key={2}
+						data={siteSettings?.imageGallery}
 					/>
 				)}
 				{activeTab === 'Stylists' && (
@@ -117,6 +118,12 @@ export async function getStaticProps() {
 	const siteSettingsQuery = `
 		*[_type == 'siteSettings'][0] {
 			...,
+			imageGallery[] {
+				...,
+				_type == "image" => {
+					asset->
+				},
+			},
 		}
 	`;
 

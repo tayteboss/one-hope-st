@@ -39,6 +39,11 @@ const AddressLink = styled.a`
 	text-align: center;
 	margin-bottom: ${pxToRem(32)};
 	${typeStyles}
+
+	* {
+		font-size: 7vw !important;
+		line-height: 0.85 !important;
+	}
 `;
 
 const Email = styled.a`
