@@ -14,6 +14,8 @@ const LogoWrapper = styled(motion.div)`
 	z-index: 10;
 	mix-blend-mode: color-burn;
 	pointer-events: none;
+
+	transition: all var(--transition-speed-default) var(--transition-ease);
 `;
 
 const LogoGraphic = styled.img`

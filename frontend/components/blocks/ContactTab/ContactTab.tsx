@@ -37,18 +37,18 @@ const typeStyles = css`
 
 const AddressLink = styled.a`
 	text-align: center;
-	margin-bottom: ${pxToRem(32)};
+	margin-bottom: ${pxToRem(24)};
 	${typeStyles}
 
 	* {
 		font-size: 7vw !important;
-		line-height: 0.85 !important;
+		line-height: 0.75 !important;
 	}
 `;
 
 const Email = styled.a`
 	text-align: center;
-	margin-bottom: ${pxToRem(16)};
+	margin-bottom: ${pxToRem(4)};
 	${typeStyles}
 `;
 

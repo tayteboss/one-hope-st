@@ -36,7 +36,7 @@ const StylistButtonWrapper = styled(motion.div)`
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -75%);
 	display: flex;
 	justify-content: center;
 	column-gap: ${pxToRem(8)};

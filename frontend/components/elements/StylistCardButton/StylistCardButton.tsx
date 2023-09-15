@@ -10,12 +10,12 @@ type Props = {
 };
 
 const LinkTag = styled.a`
-	padding: ${pxToRem(4)} ${pxToRem(12)};
+	padding: ${pxToRem(4)} ${pxToRem(12)} ${pxToRem(1)};
 	mix-blend-mode: color-burn;
 	background: var(--colour-dark-brown);
 	border-radius: 100px;
-	font-size: ${pxToRem(18)} !important;
-	line-height: ${pxToRem(20)} !important;
+	font-size: ${pxToRem(20)} !important;
+	line-height: 1 !important;
 	color: var(--colour-white);
 	white-space: nowrap;
 

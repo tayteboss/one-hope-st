@@ -54,15 +54,15 @@ const ButtonCursor = styled(motion.div)`
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 15;
-	padding: ${pxToRem(4)} ${pxToRem(12)};
+	padding: ${pxToRem(4)} ${pxToRem(12)} ${pxToRem(1)};
 	mix-blend-mode: normal;
 	background: var(--colour-dark-brown);
 	border-radius: 100px;
 `;
 
 const Text = styled.div`
-	font-size: ${pxToRem(18)};
-	line-height: ${pxToRem(20)};
+	font-size: ${pxToRem(20)};
+	line-height: 1;
 	color: var(--colour-white);
 `;
 

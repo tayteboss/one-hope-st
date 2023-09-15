@@ -6,7 +6,7 @@ export const theme = {
 		lightBrown: '#B35C28',
 	},
 	fonts: {
-		default: 'helvetica, sans-serif',
+		default: 'cyrene',
 	},
 	size: {
 		small: '1rem',

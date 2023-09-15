@@ -176,8 +176,8 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	.type-large {
-		font-size: 7vw !important;
-		line-height: 0.85 !important;
+		font-size: 8vw !important;
+		line-height: 0.75 !important;
 	}
 
 	.type-small {
