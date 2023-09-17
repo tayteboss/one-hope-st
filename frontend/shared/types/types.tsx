@@ -54,6 +54,6 @@ export type StylistType = {
 		current: string;
 	};
 	profileDescription: [];
-	profileImage: ImageType[];
+	profileImage: string;
 	bookingLink: string;
 }

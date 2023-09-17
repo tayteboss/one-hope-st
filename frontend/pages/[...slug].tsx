@@ -1,23 +1,48 @@
 import styled from 'styled-components';
 import client from '../client';
-import { StylistType } from '../shared/types/types';
+import { StylistType, TransitionsType } from '../shared/types/types';
+import LayoutWrapper from '../components/common/LayoutWrapper';
+import LayoutGrid from '../components/common/LayoutGrid';
+import NavigationWidget from '../components/blocks/NavigationWidget';
+import ProfileBio from '../components/blocks/ProfileBio';
+import ProfileImage from '../components/blocks/ProfileImage';
+import { motion } from 'framer-motion';
+import pxToRem from '../utils/pxToRem';
 
 type Props = {
 	data: StylistType;
+	pageTransitionVariants: TransitionsType;
 };
 
-const PageWrapper = styled.div``;
+const PageWrapper = styled(motion.div)`
+	position: relative;
+	z-index: 15;
+	padding: ${pxToRem(80)} 0 ${pxToRem(160)};
+`;
 
 const Page = (props: Props) => {
 	const {
-		data
+		data,
+		pageTransitionVariants
 	} = props;
 
-	console.log('data', data);
+	console.log('pageTransitionVariants', pageTransitionVariants);
+	
 
 	return (
-		<PageWrapper>
-			Page
+		<PageWrapper
+			variants={pageTransitionVariants}
+			initial='hidden'
+			animate='visible'
+			exit='hidden'
+		>
+			<LayoutWrapper>
+				<LayoutGrid>
+					<ProfileImage data={data?.profileImage} />
+					<ProfileBio data={data?.profileDescription} />
+					<NavigationWidget data={data?.bookingLink} />
+				</LayoutGrid>
+			</LayoutWrapper>
 		</PageWrapper>
 	);
 };

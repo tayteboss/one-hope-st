@@ -2,7 +2,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 import { ImageType, TransitionsType } from '../../../shared/types/types';
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 
 type Props = {
 	tabVariants: TransitionsType;
@@ -15,17 +14,22 @@ const Inner = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	pointer-events: all;
 	position: relative;
-	width: 80%;
-	height: 70%;
+	height: 100vh;
+	width: 100%;
 `;
 
-const ImageWrapper = styled(motion.div)`
+const ImageWrapper = styled(motion.div)``;
+
+const Image = styled.img`
+	height: 70%;
+	width: auto;
 	position: absolute;
-	inset: 0;
-	width: 100%;
-	height: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 100px;
+	pointer-events: all;
 `;
 
 const wrapperVariants = {
@@ -85,10 +89,9 @@ const GalleryTab = (props: Props) => {
 		>
 			<Inner>
 				{data.map((item, i) => (
-					<AnimatePresence>
+					<AnimatePresence key={i}>
 						{count === i && (
 							<ImageWrapper
-								key={i}
 								variants={wrapperVariants}
 								initial='hidden'
 								animate='visible'
@@ -96,9 +99,6 @@ const GalleryTab = (props: Props) => {
 							>
 								<Image
 									src={item?.asset?.url}
-									layout="fill"
-									objectFit="contain"
-									priority={true}
 								/>
 							</ImageWrapper>
 						)}

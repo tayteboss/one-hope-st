@@ -35,6 +35,9 @@ const StylistCardButton = (props: Props) => {
 		setButtonIsHovered
 	} = props;
 
+	console.log('link', link);
+	
+
 	return (
 		<>
 			{link && (

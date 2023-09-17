@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import pxToRem from '../../../utils/pxToRem';
 import HeaderTrigger from './HeaderTrigger';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 
 type Props = {
 	handleActiveTab: (activeTab: string) => void;
@@ -11,7 +13,7 @@ type StyledProps = {
 	$isHovered: boolean;
 }
 
-const HeaderWrapper = styled.header<StyledProps>`
+const HeaderWrapper = styled(motion.header)<StyledProps>`
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -38,43 +40,79 @@ const TriggerWrapper = styled.div`
 	justify-content: space-between;
 `;
 
+const wrapperVariants = {
+	hidden: {
+		opacity: 0,
+		transition: {
+			duration: 0.3,
+			ease: 'easeInOut'
+		}
+	},
+	visible: {
+		opacity: 1,
+		transition: {
+			duration: 0.3,
+			ease: 'easeInOut'
+		}
+	}
+};
+
 const Header = (props: Props) => {
 	const {
 		handleActiveTab
 	} = props;
 
 	const [isHovered, setIsHovered] = useState(false);
+	const [isActive, setIsActive] = useState(false);
+
+	const router = useRouter();
+
+	useEffect(() => {
+		if (router.pathname !== '/') {
+			setIsActive(false);
+		} else {
+			setIsActive(true);
+		}
+	}, [router]);
 
 	return (
-		<HeaderWrapper
-			className="header hidden-element"
-			$isHovered={isHovered}
-		>
-			<TriggerWrapper>
-				<HeaderTrigger
-					title="Gallery"
-					setIsHovered={setIsHovered}
-					handleActiveTab={handleActiveTab}
-				/>
-				<HeaderTrigger
-					title="Stylists"
-					setIsHovered={setIsHovered}
-					handleActiveTab={handleActiveTab}
-				/>
-			</TriggerWrapper>
-			<TriggerWrapper>
-				<HeaderTrigger
-					title="Contact"
-					setIsHovered={setIsHovered}
-					handleActiveTab={handleActiveTab}
-				/>
-				<HeaderTrigger
-					title="Socials"
-					setIsHovered={setIsHovered}
-					handleActiveTab={handleActiveTab}
-				/>
-			</TriggerWrapper>
-		</HeaderWrapper>
+		<>
+			{isActive && (
+				<HeaderWrapper
+					className="header"
+					$isHovered={isHovered}
+					variants={wrapperVariants}
+					initial='hidden'
+					animate='visible'
+					exit='hidden'
+				>
+					<TriggerWrapper className="hidden-element">
+						<HeaderTrigger
+							title="Gallery"
+							setIsHovered={setIsHovered}
+							handleActiveTab={handleActiveTab}
+						/>
+						<HeaderTrigger
+							title="Stylists"
+							setIsHovered={setIsHovered}
+							handleActiveTab={handleActiveTab}
+						/>
+					</TriggerWrapper>
+					<TriggerWrapper className="hidden-element">
+						<HeaderTrigger
+							title="Contact"
+							setIsHovered={setIsHovered}
+							handleActiveTab={handleActiveTab}
+						/>
+						<HeaderTrigger
+							title="Socials"
+							setIsHovered={setIsHovered}
+							handleActiveTab={handleActiveTab}
+						/>
+					</TriggerWrapper>
+				</HeaderWrapper>
+			)}
+		</>
 	)
 };
 

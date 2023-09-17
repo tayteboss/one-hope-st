@@ -24,9 +24,11 @@ const RichText = (props: Props) => {
 			data={data}
 			customNodeRules={[
 				renderNodeRule(isLink, ({ node, children, key }) => (
-					<Link href={node.url} passHref key={key} scroll={false}>
-						<a target="_blank">{children}</a>
-					</Link>
+					node?.url && (
+						<Link href={node.url} passHref key={key} scroll={false}>
+							<a target="_blank">{children}</a>
+						</Link>
+					)
 				)),
 				renderNodeRule(isParagraph, ({ children, key }) => (
 					<p key={key}>{children}</p>
