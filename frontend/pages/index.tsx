@@ -51,8 +51,6 @@ const Page = (props: Props) => {
 	const { cursorRefresh, setCursorRefresh } = useContext(CursorContext);
 
 	const handleExitComplete = () => {
-		console.log('exit complete');
-		
 		setCursorRefresh(cursorRefresh + 1);
 	};
 

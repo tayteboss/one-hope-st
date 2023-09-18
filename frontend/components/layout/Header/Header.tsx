@@ -30,8 +30,16 @@ const HeaderWrapper = styled(motion.header)<StyledProps>`
 
 	transition: opacity var(--transition-speed-slow) var(--transition-ease);
 
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		padding: ${pxToRem(8)};
+	}
+
 	.header-trigger {
 		filter: ${(props) => props.$isHovered ? 'blur(5px)' : 'blur(0)'};
+
+		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+			filter: ${(props) => props.$isHovered ? 'blur(0px)' : 'blur(0)'};
+		}
 	}
 `;
 

@@ -24,6 +24,7 @@ const ImageWrapper = styled(motion.div)``;
 const Image = styled.img`
 	height: 70%;
 	width: auto;
+	max-width: 80%;
 	position: absolute;
 	top: 50%;
 	left: 50%;

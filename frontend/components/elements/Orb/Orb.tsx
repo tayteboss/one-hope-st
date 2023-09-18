@@ -34,6 +34,13 @@ const OrbInner = styled(motion.div)`
 	top: -90vh;
 	width: 180vw;
 	height: 180vh;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		width: 500vw;
+		height: 500vh;
+		left: -250vw;
+		top: -250vh;
+	}
 `;
 
 const Svg = styled.svg<StyledProps>`

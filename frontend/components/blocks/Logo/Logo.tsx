@@ -23,6 +23,10 @@ const LogoGraphic = styled.img`
 	height: auto;
 
 	transition: all var(--transition-speed-slow) var(--transition-ease);
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		width: 50vw;
+	}
 `;
 
 const Logo = (props: Props) => {

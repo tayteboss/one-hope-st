@@ -18,6 +18,10 @@ const PageWrapper = styled(motion.div)`
 	position: relative;
 	z-index: 15;
 	padding: ${pxToRem(80)} 0 ${pxToRem(160)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		padding: ${pxToRem(40)} 0 ${pxToRem(160)};
+	}
 `;
 
 const Page = (props: Props) => {
@@ -25,9 +29,6 @@ const Page = (props: Props) => {
 		data,
 		pageTransitionVariants
 	} = props;
-
-	console.log('pageTransitionVariants', pageTransitionVariants);
-	
 
 	return (
 		<PageWrapper

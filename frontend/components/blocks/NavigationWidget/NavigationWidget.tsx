@@ -8,10 +8,12 @@ type Props = {
 
 const NavigationWidgetWrapper = styled.div`
 	position: fixed;
+	width: 100%;
 	bottom: ${pxToRem(65)};
 	left: 50%;
 	transform: translateX(-50%);
 	display: flex;
+	justify-content: center;
 	column-gap: ${pxToRem(8)};
 `;
 

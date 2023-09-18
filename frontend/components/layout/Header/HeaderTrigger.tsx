@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import pxToRem from '../../../utils/pxToRem';
 
 type Props = {
 	title: string;
@@ -17,6 +18,22 @@ const HeaderTriggerWrapper = styled.button`
 	&:hover {
 		color: var(--colour-dark-brown);
 		filter: blur(0) !important;
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
+		font-size: ${pxToRem(50)};
+		line-height: ${pxToRem(50)};
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		font-size: ${pxToRem(50)};
+		line-height: ${pxToRem(50)};
+		filter: blur(0) !important;
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		font-size: ${pxToRem(35)};
+		line-height: ${pxToRem(35)};
 	}
 `;
 

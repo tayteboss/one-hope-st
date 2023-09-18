@@ -178,11 +178,23 @@ export const GlobalStyles = createGlobalStyle`
 	.type-large {
 		font-size: 8vw !important;
 		line-height: 0.75 !important;
+
+		@media ${theme.mediaBreakpoints.tabletPortrait} {
+			font-size: 12vw !important;
+		}
 	}
 
 	.type-small {
 		font-size: 3vw !important;
 		line-height: 0.85 !important;
+
+		@media ${theme.mediaBreakpoints.tabletPortrait} {
+			font-size: 6vw !important;
+		}
+
+		@media ${theme.mediaBreakpoints.mobile} {
+			font-size: 7vw !important;
+		}
 	}
 
 	.view-element-fade-in

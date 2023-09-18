@@ -40,9 +40,17 @@ const AddressLink = styled.a`
 	margin-bottom: ${pxToRem(24)};
 	${typeStyles}
 
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		margin-bottom: ${pxToRem(16)};
+	}
+
 	* {
 		font-size: 7vw !important;
 		line-height: 0.75 !important;
+
+		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+			font-size: 12vw !important;
+		}
 	}
 `;
 
@@ -50,6 +58,10 @@ const Email = styled.a`
 	text-align: center;
 	margin-bottom: ${pxToRem(4)};
 	${typeStyles}
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		margin-bottom: ${pxToRem(8)};
+	}
 `;
 
 const Phone = styled.a`

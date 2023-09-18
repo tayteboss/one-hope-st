@@ -26,9 +26,19 @@ const StylistCardWrapper = styled.div<StyledProps>`
 		filter: blur(0px) !important;
 	}
 
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		&.type-large {
+			font-size: 15vw !important;
+		}
+	}
+
 	.stylist-card-button {
 		background: ${(props) => props.$buttonIsHovered ? 'var(--colour-light-brown)' : 'var(--colour-dark-brown)'};
 		filter: ${(props) => props.$buttonIsHovered ? 'blur(1px)' : 'blur(0px)'};
+
+		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+			filter: blur(0px) !important;
+		}
 	}
 `;
 
