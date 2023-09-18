@@ -19,17 +19,30 @@ const Inner = styled.div`
 	width: 100%;
 `;
 
-const ImageWrapper = styled(motion.div)``;
-
-const Image = styled.img`
-	height: 70%;
-	width: auto;
-	max-width: 80%;
+const ImageWrapper = styled(motion.div)`
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	border-radius: 100px;
+	height: 60%;
+	width: 70%;
+	border-radius: 500px;
+	overflow: hidden;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		height: 70%;
+		width: 80%;
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		width: 90%;
+	}
+`;
+
+const Image = styled.img`
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
 	pointer-events: all;
 `;
 

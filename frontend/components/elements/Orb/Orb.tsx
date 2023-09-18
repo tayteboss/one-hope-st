@@ -65,12 +65,20 @@ const ButtonCursor = styled(motion.div)`
 	mix-blend-mode: normal;
 	background: var(--colour-dark-brown);
 	border-radius: 100px;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		display: none;
+	}
 `;
 
 const Text = styled.div`
 	font-size: ${pxToRem(20)};
 	line-height: 1;
 	color: var(--colour-white);
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		display: none;
+	}
 `;
 
 const buttonVariants = {

@@ -37,7 +37,7 @@ export const theme = {
 		laptop: '(max-width: 1679px)',
 		tabletLandscape: '(max-width: 1440px)',
 		tabletMedium: '(max-width: 1124px)',
-		tabletPortrait: '(max-width: 820px)',
+		tabletPortrait: '(max-width: 821px)',
 		mobile: '(max-width: 550px)',
 	},
 	layout: {

@@ -19,6 +19,7 @@ const AOCWrapper = styled(motion.div)`
 	align-items: center;
 	justify-content: center;
 	mix-blend-mode: color-burn;
+	flex-direction: column;
 `;
 
 const AOCInner = styled.p`
@@ -26,6 +27,27 @@ const AOCInner = styled.p`
 	text-align: center;
 	font-size: ${pxToRem(52)};
 	color: var(--colour-light-brown);
+	padding: 0 ${pxToRem(16)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		font-size: ${pxToRem(40)} !important;
+		line-height: 1 !important;
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		font-size: ${pxToRem(32)} !important;
+		line-height: 1 !important;
+	}
+`;
+
+const Hint = styled.p`
+	display: none;
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		display: block;
+		margin-top: ${pxToRem(16)};
+		font-size: ${pxToRem(20)};
+	}
 `;
 
 const wrapperVariants = {
@@ -66,6 +88,7 @@ const AOC = (props: Props) => {
 						<AOCInner className="type-h3">
 							We acknowledge the Traditional Custodians of country throughout Australia and their connections to land, sea and community. We pay our respect to their Elders past, present and emerging.
 						</AOCInner>
+						<Hint>Click anywhere to enter</Hint>
 					</AOCWrapper>
 				)}
 			</AnimatePresence>

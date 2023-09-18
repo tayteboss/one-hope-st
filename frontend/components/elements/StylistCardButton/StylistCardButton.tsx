@@ -24,6 +24,10 @@ const LinkTag = styled.a`
 	&:hover {
 		background: var(--colour-dark-brown) !important;
 		filter: blur(0px) !important;
+
+		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+			background: var(--colour-light-brown) !important;
+		}
 	}
 `;
 
@@ -42,6 +46,7 @@ const StylistCardButton = (props: Props) => {
 					<LinkTag
 						onMouseOver={() => setButtonIsHovered(true)}
 						onMouseOut={() => setButtonIsHovered(false)}
+						onFocus={() => setButtonIsHovered(true)}
 						className="stylist-card-button"
 						target={target}
 					>
