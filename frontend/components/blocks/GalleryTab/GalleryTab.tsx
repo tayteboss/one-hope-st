@@ -24,9 +24,9 @@ const ImageWrapper = styled(motion.div)`
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	height: 60%;
+	height: 80%;
 	width: 70%;
-	border-radius: 500px;
+	border-radius: 800px;
 	overflow: hidden;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
