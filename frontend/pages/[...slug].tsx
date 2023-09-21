@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import client from '../client';
-import { StylistType, TransitionsType } from '../shared/types/types';
+import { SiteSettingsType, StylistType, TransitionsType } from '../shared/types/types';
 import LayoutWrapper from '../components/common/LayoutWrapper';
 import LayoutGrid from '../components/common/LayoutGrid';
 import NavigationWidget from '../components/blocks/NavigationWidget';
@@ -8,9 +8,11 @@ import ProfileBio from '../components/blocks/ProfileBio';
 import ProfileImage from '../components/blocks/ProfileImage';
 import { motion } from 'framer-motion';
 import pxToRem from '../utils/pxToRem';
+import { NextSeo } from 'next-seo';
 
 type Props = {
 	data: StylistType;
+	siteSettings: SiteSettingsType;
 	pageTransitionVariants: TransitionsType;
 };
 
@@ -27,6 +29,7 @@ const PageWrapper = styled(motion.div)`
 const Page = (props: Props) => {
 	const {
 		data,
+		siteSettings,
 		pageTransitionVariants
 	} = props;
 
@@ -37,6 +40,10 @@ const Page = (props: Props) => {
 			animate='visible'
 			exit='hidden'
 		>
+			<NextSeo
+				title={`"One Hope St - ${data?.name}`}
+				description={siteSettings?.seoDescription || ''}
+			/>
 			<LayoutWrapper>
 				<LayoutGrid>
 					<ProfileImage data={data?.profileImage} />
@@ -67,17 +74,31 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: any) {
 	const stylistsQuery = `
-	*[_type == 'stylists' && slug.current == "${params.slug[0]}"][0] {
+		*[_type == 'stylists' && slug.current == "${params.slug[0]}"][0] {
 			...,
 			'profileImage': profileImage.asset->url,
 		}
 	`;
 
+	const siteSettingsQuery = `
+		*[_type == 'siteSettings'][0] {
+			...,
+			imageGallery[] {
+				...,
+				_type == "image" => {
+					asset->
+				},
+			},
+		}
+	`;
+
 	const data = await client.fetch(stylistsQuery);
+	const siteSettings = await client.fetch(siteSettingsQuery);
 
 	return {
 		props: {
-			data
+			data,
+			siteSettings
 		},
 	};
 };
