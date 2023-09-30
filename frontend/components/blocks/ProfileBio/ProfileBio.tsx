@@ -21,7 +21,7 @@ const Inner = styled.div`
 		text-align: center;
 
 		@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-			font-size: ${pxToRem(26)} !important;
+			font-size: ${pxToRem(29)} !important;
 			line-height: 1 !important;
 		}
 	}

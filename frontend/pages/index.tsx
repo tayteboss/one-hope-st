@@ -3,13 +3,13 @@ import { NextSeo } from 'next-seo';
 import client from '../client';
 import { SiteSettingsType, StylistType, TransitionsType } from '../shared/types/types';
 import Logo from '../components/blocks/Logo';
-import SocialsTab from '../components/blocks/SocialsTab';
 import GalleryTab from '../components/blocks/GalleryTab';
 import StylistsTab from '../components/blocks/StylistsTab';
 import ContactTab from '../components/blocks/ContactTab';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useContext } from 'react';
 import { CursorContext } from '../components/layout/Layout';
+import AboutTab from '../components/blocks/AboutTab';
 
 const PageWrapper = styled(motion.div)``;
 
@@ -97,15 +97,16 @@ const Page = (props: Props) => {
 						addressLink={siteSettings?.mapsLink}
 						phone={siteSettings?.phone}
 						email={siteSettings?.email}
-
-					/>
-				)}
-				{activeTab === 'Socials' && (
-					<SocialsTab
-						tabVariants={tabVariants}
-						key={5}
 						instagramLink={siteSettings?.instagramLink}
 						instagramHandle={siteSettings?.instagramHandle}
+					/>
+				)}
+				{activeTab === 'About' && (
+					<AboutTab
+						tabVariants={tabVariants}
+						key={5}
+						description={siteSettings?.aboutDescription}
+						image={siteSettings?.aboutImage}
 					/>
 				)}
 			</AnimatePresence>
@@ -123,6 +124,7 @@ export async function getStaticProps() {
 					asset->
 				},
 			},
+			'aboutImage': aboutImage.asset->url,
 		}
 	`;
 

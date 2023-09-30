@@ -67,5 +67,18 @@ export default {
 				layout: 'grid',
 			},
 		},
+		// {
+		// 	title: 'About Image',
+		// 	name: 'aboutImage',
+		// 	type: 'image',
+		// },
+		{
+			title: 'About Description', 
+			name: 'aboutDescription',
+			type: 'array', 
+			of: [
+				{ type: 'block' }
+			],
+		},
 	]
 }

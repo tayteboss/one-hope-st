@@ -50,14 +50,14 @@ const wrapperVariants = {
 	hidden: {
 		opacity: 0,
 		transition: {
-			duration: 1,
+			duration: 1.5,
 			ease: 'easeInOut'
 		}
 	},
 	visible: {
 		opacity: 1,
 		transition: {
-			duration: 1,
+			duration: 1.5,
 			ease: 'easeInOut'
 		}
 	}

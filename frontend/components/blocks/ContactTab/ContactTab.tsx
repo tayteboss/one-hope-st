@@ -3,6 +3,7 @@ import { TransitionsType } from '../../../shared/types/types';
 import { motion } from 'framer-motion';
 import { PortableText } from '@portabletext/react';
 import pxToRem from '../../../utils/pxToRem';
+import Link from 'next/link';
 
 type Props = {
 	tabVariants: TransitionsType;
@@ -10,6 +11,8 @@ type Props = {
 	addressLink: string;
 	phone: string;
 	email: string;
+	instagramLink: string;
+	instagramHandle: string;
 };
 
 const ContactTabWrapper = styled(motion.div)`
@@ -64,6 +67,12 @@ const Email = styled.a`
 	}
 `;
 
+const LinkTag = styled.a`
+	text-align: center;
+	margin-bottom: ${pxToRem(4)};
+	${typeStyles}
+`;
+
 const Phone = styled.a`
 	text-align: center;
 	${typeStyles}
@@ -75,7 +84,9 @@ const ContactTab = (props: Props) => {
 		address,
 		addressLink,
 		phone,
-		email
+		email,
+		instagramLink,
+		instagramHandle,
 	} = props;
 
 	return (
@@ -105,6 +116,16 @@ const ContactTab = (props: Props) => {
 					>
 						{email}
 					</Email>
+				)}
+				{(instagramLink && instagramHandle) && (
+					<Link href={instagramLink} passHref>
+						<LinkTag
+							target="_blank"
+							className="cursor-instagram type-small"
+						>
+							@{instagramHandle}
+						</LinkTag>
+					</Link>
 				)}
 				{phone && (
 					<Phone

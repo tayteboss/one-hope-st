@@ -41,7 +41,7 @@ const Page = (props: Props) => {
 			exit='hidden'
 		>
 			<NextSeo
-				title={`"One Hope St - ${data?.name}`}
+				title={`One Hope St - ${data?.name}`}
 				description={siteSettings?.seoDescription || ''}
 			/>
 			<LayoutWrapper>

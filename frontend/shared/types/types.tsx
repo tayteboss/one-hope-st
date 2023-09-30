@@ -46,6 +46,8 @@ export type SiteSettingsType = {
 	aoc: string;
 	imageGallery: ImageType[];
 	mapsLink: string;
+	aboutDescription: [];
+	aboutImage: string;
 };
 
 export type StylistType = {

@@ -113,7 +113,7 @@ const Header = (props: Props) => {
 							handleActiveTab={handleActiveTab}
 						/>
 						<HeaderTrigger
-							title="Socials"
+							title="About"
 							setIsHovered={setIsHovered}
 							handleActiveTab={handleActiveTab}
 						/>
