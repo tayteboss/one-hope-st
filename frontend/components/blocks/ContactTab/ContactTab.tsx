@@ -62,8 +62,17 @@ const Email = styled.a`
 	margin-bottom: ${pxToRem(4)};
 	${typeStyles}
 
+	font-size: 3vw !important;
+	line-height: 0.85 !important;
+
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		margin-bottom: ${pxToRem(8)};
+		font-size: 6vw !important;
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		font-size: ${pxToRem(23)} !important;
+		line-height: 1;
 	}
 `;
 
@@ -71,6 +80,18 @@ const LinkTag = styled.a`
 	text-align: center;
 	margin-bottom: ${pxToRem(4)};
 	${typeStyles}
+
+	font-size: 3vw !important;
+	line-height: 0.85 !important;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		font-size: 6vw !important;
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		font-size: ${pxToRem(23)} !important;
+		line-height: 1;
+	}
 `;
 
 const Phone = styled.a`
@@ -86,15 +107,15 @@ const ContactTab = (props: Props) => {
 		phone,
 		email,
 		instagramLink,
-		instagramHandle,
+		instagramHandle
 	} = props;
 
 	return (
 		<ContactTabWrapper
 			variants={tabVariants}
-			initial='hidden'
-			animate='visible'
-			exit='hidden'
+			initial="hidden"
+			animate="visible"
+			exit="hidden"
 			className="tab-wrapper"
 		>
 			<Inner>
@@ -104,34 +125,23 @@ const ContactTab = (props: Props) => {
 						target="_blank"
 						className="type-large cursor-map"
 					>
-						<PortableText
-							value={address}
-						/>
+						<PortableText value={address} />
 					</AddressLink>
 				)}
 				{email && (
-					<Email
-						href={`mailto:${email}`}
-						className="type-small cursor-email"
-					>
+					<Email href={`mailto:${email}`} className="cursor-email">
 						{email}
 					</Email>
 				)}
-				{(instagramLink && instagramHandle) && (
+				{instagramLink && instagramHandle && (
 					<Link href={instagramLink} passHref>
-						<LinkTag
-							target="_blank"
-							className="cursor-instagram type-small"
-						>
+						<LinkTag target="_blank" className="cursor-instagram">
 							@{instagramHandle}
 						</LinkTag>
 					</Link>
 				)}
 				{phone && (
-					<Phone
-						href={`tel:${phone}`}
-						className="type-small cursor-phone"
-					>
+					<Phone href={`tel:${phone}`} className="cursor-phone">
 						{phone}
 					</Phone>
 				)}
