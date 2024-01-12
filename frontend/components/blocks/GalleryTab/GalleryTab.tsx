@@ -50,24 +50,21 @@ const wrapperVariants = {
 	hidden: {
 		opacity: 0,
 		transition: {
-			duration: 1.5,
+			duration: 2,
 			ease: 'easeInOut'
 		}
 	},
 	visible: {
 		opacity: 1,
 		transition: {
-			duration: 1.5,
+			duration: 2,
 			ease: 'easeInOut'
 		}
 	}
 };
 
 const GalleryTab = (props: Props) => {
-	const {
-		tabVariants,
-		data
-	} = props;
+	const { tabVariants, data } = props;
 
 	const hasData = data.length > 0;
 
@@ -96,9 +93,9 @@ const GalleryTab = (props: Props) => {
 	return (
 		<GalleryTabWrapper
 			variants={tabVariants}
-			initial='hidden'
-			animate='visible'
-			exit='hidden'
+			initial="hidden"
+			animate="visible"
+			exit="hidden"
 			className="tab-wrapper"
 		>
 			<Inner>
@@ -107,13 +104,11 @@ const GalleryTab = (props: Props) => {
 						{count === i && (
 							<ImageWrapper
 								variants={wrapperVariants}
-								initial='hidden'
-								animate='visible'
-								exit='hidden'
+								initial="hidden"
+								animate="visible"
+								exit="hidden"
 							>
-								<Image
-									src={item?.asset?.url}
-								/>
+								<Image src={item?.asset?.url} />
 							</ImageWrapper>
 						)}
 					</AnimatePresence>
