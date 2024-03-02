@@ -10,7 +10,7 @@ type Props = {
 	tabVariants: TransitionsType;
 	description: [];
 	image: string;
-}
+};
 
 const AboutTabWrapper = styled(motion.div)`
 	mix-blend-mode: color-burn;
@@ -36,8 +36,8 @@ const DescriptionWrapper = styled.div`
 	height: 100dvh;
 	padding: ${pxToRem(160)} 0;
 	pointer-events: all;
-	-ms-overflow-style: none;  /* IE and Edge */
-	scrollbar-width: none;  /* Firefox */
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
 
 	&::-webkit-scrollbar {
 		display: none;
@@ -86,11 +86,7 @@ const Image = styled.img`
 `;
 
 const AboutTab = (props: Props) => {
-	const {
-		tabVariants,
-		description,
-		image
-	} = props;
+	const { tabVariants, description, image } = props;
 
 	return (
 		<>
@@ -105,19 +101,17 @@ const AboutTab = (props: Props) => {
 			</LayoutWrapper> */}
 			<AboutTabWrapper
 				variants={tabVariants}
-				initial='hidden'
-				animate='visible'
-				exit='hidden'
+				initial="hidden"
+				animate="visible"
+				exit="hidden"
 				className="tab-wrapper"
 			>
 				<LayoutWrapper>
 					<LayoutGrid>
 						<Inner>
 							{description && (
-								<DescriptionWrapper>
-									<PortableText
-										value={description}
-									/>
+								<DescriptionWrapper className="sentence-case">
+									<PortableText value={description} />
 								</DescriptionWrapper>
 							)}
 						</Inner>

@@ -4,7 +4,7 @@ import pxToRem from '../../../utils/pxToRem';
 
 type Props = {
 	data: [];
-}
+};
 
 const ProfileBioWrapper = styled.section`
 	grid-column: 3 / -3;
@@ -31,10 +31,8 @@ const ProfileBio = ({ data }: Props) => {
 	return (
 		<ProfileBioWrapper>
 			{data && (
-				<Inner>
-					<PortableText
-						value={data}
-					/>
+				<Inner className="sentence-case">
+					<PortableText value={data} />
 				</Inner>
 			)}
 		</ProfileBioWrapper>

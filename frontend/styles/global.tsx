@@ -197,6 +197,12 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
+	.sentence-case {
+		* {
+			text-transform: none;
+		}
+	}
+
 	.view-element-fade-in
 	{
 		opacity: 0;
