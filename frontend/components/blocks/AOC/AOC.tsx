@@ -5,7 +5,7 @@ import pxToRem from '../../../utils/pxToRem';
 type Props = {
 	aocIsActive: boolean;
 	handleCloseAoc: () => void;
-}
+};
 
 const AOCWrapper = styled(motion.div)`
 	position: fixed;
@@ -68,10 +68,7 @@ const wrapperVariants = {
 };
 
 const AOC = (props: Props) => {
-	const {
-		aocIsActive,
-		handleCloseAoc
-	} = props;
+	const { aocIsActive, handleCloseAoc } = props;
 
 	return (
 		<>
@@ -80,13 +77,16 @@ const AOC = (props: Props) => {
 					<AOCWrapper
 						onClick={() => handleCloseAoc()}
 						variants={wrapperVariants}
-						initial='hidden'
-						animate='visible'
-						exit='hidden'
-						className="cursor-aoc"
+						initial="hidden"
+						animate="visible"
+						exit="hidden"
+						className="cursor-aoc sentence-case"
 					>
 						<AOCInner className="type-h3">
-							We acknowledge the Traditional Custodians of country throughout Australia and their connections to land, sea and community. We pay our respect to their Elders past, present and emerging.
+							We acknowledge the Traditional Custodians of country
+							throughout Australia and their connections to land,
+							sea and community. We pay our respect to their
+							Elders past, present and emerging.
 						</AOCInner>
 						<Hint>Click anywhere to enter</Hint>
 					</AOCWrapper>
